@@ -106,7 +106,7 @@ class SignInScreen extends StatelessWidget {
                         ),
                         onPressed: () {
                           // pushReplacement: retira a tela atual da pilha e substitui pela nova tela
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((c) => BaseScreen())));
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((c) => const BaseScreen())));
                         },
                         child: const Text(
                           'Entrar',
