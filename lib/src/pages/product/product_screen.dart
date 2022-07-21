@@ -27,8 +27,10 @@ class ProductScreen extends StatelessWidget {
                   top: Radius.circular(50),
                 ),
                 boxShadow: [
-                  BoxShadow(color: Colors.grey.shade600, offset: const Offset(0, 2)),
-                   
+                  BoxShadow(
+                    color: Colors.grey.shade600,
+                    offset: const Offset(0, 2),
+                  ),
                 ],
               ),
             ),
