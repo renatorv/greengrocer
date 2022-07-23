@@ -6,11 +6,14 @@ import 'package:greengrocer/src/services/utils_services.dart';
 
 class CartTile extends StatefulWidget {
   final CartItemModel cartItem;
-  final Function(CartItemModel) remove;
+  // final Function(CartItemModel) remove;
+  final Function(int) updatedQuantity; //<=== Aqui criamos
+
   const CartTile({
     Key? key,
     required this.cartItem,
-    required this.remove,
+    // required this.remove,
+    required this.updatedQuantity, //<=== Aqui recebemos no construtor
   }) : super(key: key);
 
   @override
@@ -56,16 +59,18 @@ class _CartTileState extends State<CartTile> {
         trailing: QuantityWidget(
           suffixText: widget.cartItem.item.unit,
           value: widget.cartItem.quantity,
-          result: (quantity) {
-            setState(() {
-              widget.cartItem.quantity = quantity;
+          result: widget
+              .updatedQuantity, // <=== Bem aqui (Como estamos usando uma classe Stateful precisamos chamar com o "widget.")
+          // result: (quantity) {
+          //   setState(() {
+          //     widget.cartItem.quantity = quantity;
 
-              if (quantity == 0) {
-                // Remover item do carrinho
-                widget.remove(widget.cartItem);
-              }
-            });
-          },
+          //     if (quantity == 0) {
+          //       // Remover item do carrinho
+          //       widget.remove(widget.cartItem);
+          //     }
+          //   });
+          // },
           isRemovable: true,
         ),
       ),

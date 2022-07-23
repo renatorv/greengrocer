@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/models/cart_item_model.dart';
 import 'package:greengrocer/src/pages/cart/components/cart_tile.dart';
+import 'package:greengrocer/src/pages/commom_widgets/payment_dialog.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 import 'package:greengrocer/src/config/app_data.dart' as app_data;
 
@@ -43,9 +44,20 @@ class _CartTabState extends State<CartTab> {
             child: ListView.builder(
               itemCount: app_data.cartItems.length,
               itemBuilder: (_, index) {
+                final cartItem = app_data.cartItems[index];
                 return CartTile(
                   cartItem: app_data.cartItems[index],
-                  remove: removeItemFromCart,
+                  // remove: removeItemFromCart,
+                  updatedQuantity: (qtd) {
+                    // <=== Chamando nosso novo atributo que é uma função que recebe a quantidade
+                    if (qtd == 0) {
+                      //<=== Removendo do carrinho passando o item do carrinho que o nosso ItemBuilder fornece
+                      removeItemFromCart(app_data.cartItems[index]);
+                    } else {
+                      //<=== Atualizando a quantidade do produto
+                      setState(() => cartItem.quantity = qtd);
+                    }
+                  },
                 );
               },
             ),
@@ -94,6 +106,17 @@ class _CartTabState extends State<CartTab> {
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
                       print('Confirma pedido: $result');
+
+                      if (result ?? false) {
+                        showDialog(
+                          context: context,
+                          builder: (_) {
+                            return PaymentDialog(
+                              order: app_data.orders.first,
+                            );
+                          },
+                        );
+                      }
                     },
                     child: const Text(
                       'Concluir pedido',
