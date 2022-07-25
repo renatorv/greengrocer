@@ -2,7 +2,6 @@ import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/pages/home/components/item_tile.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
@@ -88,7 +87,7 @@ class _HomeTabState extends State<HomeTab> {
         // método que será disparado quando for clicado para adicionar o item ao carrinho
         receiveCreateAddToCardAnimationMethod: (addToCardAnimationMethod) {
           // You can run the animation by addToCardAnimationMethod, just pass trough the the global key of  the image as parameter
-          this.runAddToCardAnimation = addToCardAnimationMethod;
+          runAddToCardAnimation = addToCardAnimationMethod;
         },
         child: Column(
           children: [

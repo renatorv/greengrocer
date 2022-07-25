@@ -108,7 +108,6 @@ class _CartTabState extends State<CartTab> {
                     ),
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      print('Confirma pedido: $result');
 
                       if (result ?? false) {
                         showDialog(
