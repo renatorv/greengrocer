@@ -40,21 +40,7 @@ class _HomeTabState extends State<HomeTab> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: const TextStyle(fontSize: 30),
-            children: [
-              TextSpan(
-                text: 'Green',
-                style: TextStyle(color: CustomColors.customSwatchColor),
-              ),
-              TextSpan(
-                text: 'grocer',
-                style: TextStyle(color: CustomColors.customContrastColor),
-              ),
-            ],
-          ),
-        ),
+        title: AppNameWidget(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15, right: 15),
@@ -161,6 +147,31 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AppNameWidget extends StatelessWidget {
+  const AppNameWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text.rich(
+      TextSpan(
+        style: const TextStyle(fontSize: 30),
+        children: [
+          TextSpan(
+            text: 'Green',
+            style: TextStyle(color: CustomColors.customSwatchColor),
+          ),
+          TextSpan(
+            text: 'grocer',
+            style: TextStyle(color: CustomColors.customContrastColor),
+          ),
+        ],
       ),
     );
   }
