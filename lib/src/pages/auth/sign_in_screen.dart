@@ -5,6 +5,7 @@ import 'package:greengrocer/src/config/custom_colors.dart';
 import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
 
 import '../base/base_screen.dart';
+import '../commom_widgets/app_name_widget.dart';
 import '../commom_widgets/coustom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -27,27 +28,31 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Nome do App
-                    Text.rich(
-                      TextSpan(
-                        style: const TextStyle(fontSize: 40),
-                        children: [
-                          const TextSpan(
-                            text: 'Green',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'grocer',
-                            style: TextStyle(
-                              color: CustomColors.customContrastColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
+                    const AppNameWidget(
+                      greenTitleColor: Colors.white,
+                      textSize: 40,
                     ),
+                    // Text.rich(
+                    //   TextSpan(
+                    //     style: const TextStyle(fontSize: 40),
+                    //     children: [
+                    //       const TextSpan(
+                    //         text: 'Green',
+                    //         style: TextStyle(
+                    //           color: Colors.white,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //       TextSpan(
+                    //         text: 'grocer',
+                    //         style: TextStyle(
+                    //           color: CustomColors.customContrastColor,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     // Categorias
                     SizedBox(
                       height: 36,
@@ -107,7 +112,9 @@ class SignInScreen extends StatelessWidget {
                         ),
                         onPressed: () {
                           // pushReplacement: retira a tela atual da pilha e substitui pela nova tela
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((c) => const BaseScreen())));
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: ((c) => const BaseScreen())));
                         },
                         child: const Text(
                           'Entrar',
