@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:greengrocer/src/config/custom_colors.dart';
-import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
 import 'package:greengrocer/src/pages_route/app_pages.dart';
 
-import '../base/base_screen.dart';
 import '../commom_widgets/app_name_widget.dart';
 import '../commom_widgets/coustom_text_field.dart';
 
@@ -113,10 +111,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          // pushReplacement: retira a tela atual da pilha e substitui pela nova tela
-                          // Navigator.of(context).pushReplacement(
-                          //     MaterialPageRoute(
-                          //         builder: ((c) => const BaseScreen())));
+                          //retira a tela atual da pilha e substitui pela nova tela
                           Get.offNamed(PagesRoutes.baseRoute);
                         },
                         child: const Text(
@@ -173,12 +168,6 @@ class SignInScreen extends StatelessWidget {
                           side: const BorderSide(width: 2, color: Colors.green),
                         ),
                         onPressed: () {
-                          // Navigator.of(context).push(
-                          //   MaterialPageRoute(
-                          //     builder: (context) => SignUpScreen(),
-                          //   ),
-                          // );
-
                           Get.toNamed(PagesRoutes.signUpRoute);
                         },
                         child: const Text(
