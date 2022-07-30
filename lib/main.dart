@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:greengrocer/src/pages_route/app_pages.dart';
 
+import 'src/pages/auth/controller/auth_controller.dart';
+
 void main() {
+  //*****************************************************/
+  // Injetando o AuthController na memória da aplicação
+  Get.put(AuthController());
+  //*****************************************************/
+
   runApp(const MyApp());
 }
 
