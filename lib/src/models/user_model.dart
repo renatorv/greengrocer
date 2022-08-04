@@ -1,5 +1,5 @@
 class UserModel {
-  String? name;
+  String? fullname;
   String? email;
   String? phone;
   String? cpf;
@@ -8,7 +8,7 @@ class UserModel {
   String? token;
 
   UserModel({
-    this.name,
+    this.fullname,
     this.email,
     this.phone,
     this.cpf,
@@ -24,7 +24,7 @@ class UserModel {
       cpf: map['cpf'],
       email: map['email'],
       id: map['id'],
-      name: map['fullname'],
+      fullname: map['fullname'],
       password: map[''],
       phone: map['phone'],
       token: map['token'],
@@ -38,7 +38,7 @@ class UserModel {
       'cpf': cpf,
       'email': email,
       'id': id,
-      'fullname': name,
+      'fullname': fullname,
       'password': password,
       'phone': phone,
       'token': token,
@@ -47,6 +47,6 @@ class UserModel {
 
   @override
   String toString() {
-    return 'name: $name | cpf: $cpf';
+    return 'name: $fullname | cpf: $cpf';
   }
 }

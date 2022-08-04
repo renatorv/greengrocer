@@ -85,7 +85,7 @@ UserModel user = UserModel(
   phone: '64 9 8415-4530',
   cpf: '999.999.999-99',
   email: 'renatorv@gmail.com',
-  name: 'Renato Alves Pereira',
+  fullname: 'Renato Alves Pereira',
   password: '',
 );
 
