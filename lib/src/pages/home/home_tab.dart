@@ -34,7 +34,21 @@ class _HomeTabState extends State<HomeTab> {
 
   final UtilsServices utilsServices = UtilsServices();
 
-  bool isLoading = false;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        setState(() {
+          isLoading = false;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,26 +126,43 @@ class _HomeTabState extends State<HomeTab> {
             Container(
               padding: const EdgeInsets.only(left: 25),
               height: 40,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (_, index) {
-                  return CategoryTile(
-                    onPressed: () {
-                      setState(() {
-                        selectedCategory = app_data.categories[index];
-                      });
-                    },
-                    category: app_data.categories[index],
-                    isSelected: app_data.categories[index] == selectedCategory,
-                  );
-                },
-                separatorBuilder: (_, index) => const SizedBox(width: 10),
-                itemCount: app_data.categories.length,
-              ),
+              child: !isLoading
+                  ? ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (_, index) {
+                        return CategoryTile(
+                          onPressed: () {
+                            setState(() {
+                              selectedCategory = app_data.categories[index];
+                            });
+                          },
+                          category: app_data.categories[index],
+                          isSelected:
+                              app_data.categories[index] == selectedCategory,
+                        );
+                      },
+                      separatorBuilder: (_, index) => const SizedBox(width: 10),
+                      itemCount: app_data.categories.length,
+                    )
+                  : ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: List.generate(
+                        10,
+                        (index) => Container(
+                          margin: const EdgeInsets.only(right: 12),
+                          alignment: Alignment.center,
+                          child: CustomShimmer(
+                            height: 25,
+                            width: 80,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
             ),
             // Grid
             Expanded(
-              child: isLoading
+              child: !isLoading
                   ? GridView.builder(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                       physics: const BouncingScrollPhysics(),
@@ -157,13 +188,14 @@ class _HomeTabState extends State<HomeTab> {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       childAspectRatio: 9 / 11.5,
-                      children: [
-                        CustomShimmer(
+                      children: List.generate(
+                        10,
+                        (index) => CustomShimmer(
                           height: double.infinity,
                           width: double.infinity,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                      ],
+                      ),
                     ),
             ),
           ],

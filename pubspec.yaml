@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.17.0
   qr_flutter: ^4.0.0
   add_to_cart_animation: ^0.0.7
+  flutter_secure_storage: ^5.1.0
   fluttertoast: ^8.0.8
   shimmer: 
   get: ^4.6.5
