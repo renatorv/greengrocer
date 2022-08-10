@@ -8,6 +8,19 @@ import 'package:greengrocer/src/services/http_manager.dart';
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
+  AuthResult handleUserOrError(Map<dynamic, dynamic> result) {
+    // se veio o result deu bom, caso contrário aconteceu um erro
+    if (result['result'] != null) {
+      //{id: ejFjPEFQ8y, fullname: GreenGrocer, email: greengrocerteste@gmail.com, phone: (99) 99999-9999, cpf: 123.456.789-10, token: r:6e2faea38779e882dbd99a404818c051}
+
+      final user = UserModel.fromMap(result['result']);
+
+      return AuthResult.success(user);
+    } else {
+      return AuthResult.error(auth_errors.authErrorsString(result['error']));
+    }
+  }
+
   Future<AuthResult> validateToken(String token) async {
     final result = await _httpManager.restRequest(
       url: Endpoints.validateToken,
@@ -15,14 +28,7 @@ class AuthRepository {
       headers: {'X-Parse-Session-Token': token},
     );
 
-    if (result['result'] != null) {
-      final user = UserModel.fromMap(result['result']);
-
-      return AuthResult.success(user);
-    } else {
-      print(result['error']);
-      return AuthResult.error(auth_errors.authErrorsString(result['error']));
-    }
+    return handleUserOrError(result);
   }
 
   Future<AuthResult> signIn({
@@ -38,16 +44,17 @@ class AuthRepository {
       },
     );
 
-    // se veio o result deu bom, caso contrário aconteceu um erro
-    if (result['result'] != null) {
-      //{id: ejFjPEFQ8y, fullname: GreenGrocer, email: greengrocerteste@gmail.com, phone: (99) 99999-9999, cpf: 123.456.789-10, token: r:6e2faea38779e882dbd99a404818c051}
+    return handleUserOrError(result);
+  }
 
-      final user = UserModel.fromMap(result['result']);
+  Future<AuthResult> signUp(UserModel user) async {
+    final result = await _httpManager.restRequest(
+      url: Endpoints.signup,
+      method: HttpMethods.post,
+      // TODO Enviar dados
+      body: user.toMap(),
+    );
 
-      return AuthResult.success(user);
-    } else {
-      print(result['error']);
-      return AuthResult.error(auth_errors.authErrorsString(result['error']));
-    }
+    return handleUserOrError(result);
   }
 }

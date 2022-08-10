@@ -59,6 +59,26 @@ class AuthController extends GetxController {
     Get.offAllNamed(PagesRoutes.baseRoute);
   }
 
+  Future<void> signUp() async {
+    isLoading.value = true;
+    AuthResult result = await _authRepository.signUp(user);
+    isLoading.value = false;
+
+    result.when(
+      success: (user) {
+        this.user = user;
+
+        saveTokenAndPriceedToBase();
+      },
+      error: (msg) {
+        _utilsServices.showToast(
+          message: msg,
+          isError: true,
+        );
+      },
+    );
+  }
+
   Future<void> signIn({required String email, required String pass}) async {
     isLoading.value = true;
 
