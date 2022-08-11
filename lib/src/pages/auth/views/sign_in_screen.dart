@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:greengrocer/src/config/custom_colors.dart';
+import 'package:greengrocer/src/pages/auth/views/components/forgot_password_dialog.dart';
 import 'package:greengrocer/src/pages_route/app_pages.dart';
+import 'package:greengrocer/src/services/utils_services.dart';
 import 'package:greengrocer/src/services/validators.dart';
 
 import '../../commom_widgets/app_name_widget.dart';
@@ -18,6 +20,7 @@ class SignInScreen extends StatelessWidget {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
+  final utilservices = UtilsServices();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -159,7 +162,22 @@ class SignInScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final bool? result = await showDialog(
+                              context: context,
+                              builder: (_) {
+                                return ForgotPasswordDialog(
+                                  email: emailCtrl.text,
+                                );
+                              },
+                            );
+                            if (result ?? false) {
+                              utilservices.showToast(
+                                message:
+                                    'Um link de recuperação foi enviado para o seu e-mail.',
+                              );
+                            }
+                          },
                           child: Text(
                             'Esqueceu a senha?',
                             style: TextStyle(

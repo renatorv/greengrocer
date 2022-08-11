@@ -12,20 +12,22 @@ class CoustomTextField extends StatefulWidget {
   final void Function(String?)? onSaved;
   final TextEditingController? controller;
   final TextInputType? textInputType;
+  final GlobalKey<FormFieldState>? formFieldKey;
 
-  const CoustomTextField(
-      {Key? key,
-      required this.icon,
-      required this.label,
-      this.isSecret = false,
-      this.inputFormatters,
-      this.initialValue,
-      this.readyOnly = false,
-      this.validator,
-      this.onSaved,
-      this.controller,
-      this.textInputType})
-      : super(key: key);
+  const CoustomTextField({
+    Key? key,
+    required this.icon,
+    required this.label,
+    this.isSecret = false,
+    this.inputFormatters,
+    this.initialValue,
+    this.readyOnly = false,
+    this.validator,
+    this.onSaved,
+    this.controller,
+    this.textInputType,
+    this.formFieldKey,
+  }) : super(key: key);
 
   @override
   State<CoustomTextField> createState() => _CoustomTextFieldState();
@@ -44,6 +46,7 @@ class _CoustomTextFieldState extends State<CoustomTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        key: widget.formFieldKey,
         controller: widget.controller,
         validator: widget.validator,
         onSaved: widget.onSaved,
