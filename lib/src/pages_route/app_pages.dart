@@ -4,6 +4,8 @@ import 'package:greengrocer/src/pages/auth/sign_up_screen.dart';
 import 'package:greengrocer/src/pages/base/base_screen.dart';
 import 'package:greengrocer/src/pages/splash/splash_screen.dart';
 
+import '../pages/home/home_binding.dart/home_binding.dart';
+
 abstract class AppPages {
   static final pages = <GetPage>[
     //
@@ -25,6 +27,7 @@ abstract class AppPages {
     GetPage(
       name: PagesRoutes.baseRoute,
       page: () => const BaseScreen(),
+      bindings: [HomeBinding()],
     ),
   ];
 }
