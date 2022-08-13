@@ -11,10 +11,10 @@ class CategoryModel {
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'title': title});
     result.addAll({'id': id});
-  
+
     return result;
   }
 
@@ -27,5 +27,9 @@ class CategoryModel {
 
   String toJson() => json.encode(toMap());
 
-  factory CategoryModel.fromJson(String source) => CategoryModel.fromMap(json.decode(source));
+  factory CategoryModel.fromJson(String source) =>
+      CategoryModel.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'CategoryModel(title: $title, id: $id)';
 }
