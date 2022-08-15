@@ -62,13 +62,13 @@ class _ItemTileState extends State<ItemTile> {
                   // Imagem
                   Expanded(
                     child: Hero(
-                      tag: widget.item.imgUrl,
-                      child: Image.asset(widget.item.imgUrl, key: imageGk),
+                      tag: widget.item.picture,
+                      child: Image.asset(widget.item.picture, key: imageGk),
                     ),
                   ),
                   //Nome
                   Text(
-                    widget.item.itemName,
+                    widget.item.title,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

@@ -5,8 +5,8 @@ import '../models/cart_item_model.dart';
 import '../models/order_model.dart';
 
 ItemModel apple = ItemModel(
-  itemName: 'Maçã',
-  imgUrl: 'assets/fruits/apple.png',
+  title: 'Maçã',
+  picture: 'assets/fruits/apple.png',
   unit: 'kg',
   price: 5.5,
   description:
@@ -14,8 +14,8 @@ ItemModel apple = ItemModel(
 );
 
 ItemModel grape = ItemModel(
-  imgUrl: 'assets/fruits/grape.png',
-  itemName: 'Uva',
+  picture: 'assets/fruits/grape.png',
+  title: 'Uva',
   price: 7.4,
   unit: 'kg',
   description:
@@ -23,8 +23,8 @@ ItemModel grape = ItemModel(
 );
 
 ItemModel guava = ItemModel(
-  imgUrl: 'assets/fruits/guava.png',
-  itemName: 'Goiaba',
+  picture: 'assets/fruits/guava.png',
+  title: 'Goiaba',
   price: 11.5,
   unit: 'kg',
   description:
@@ -32,8 +32,8 @@ ItemModel guava = ItemModel(
 );
 
 ItemModel kiwi = ItemModel(
-  imgUrl: 'assets/fruits/kiwi.png',
-  itemName: 'Kiwi',
+  picture: 'assets/fruits/kiwi.png',
+  title: 'Kiwi',
   price: 2.5,
   unit: 'un',
   description:
@@ -41,8 +41,8 @@ ItemModel kiwi = ItemModel(
 );
 
 ItemModel mango = ItemModel(
-  imgUrl: 'assets/fruits/mango.png',
-  itemName: 'Manga',
+  picture: 'assets/fruits/mango.png',
+  title: 'Manga',
   price: 2.5,
   unit: 'un',
   description:
@@ -50,8 +50,8 @@ ItemModel mango = ItemModel(
 );
 
 ItemModel papaya = ItemModel(
-  imgUrl: 'assets/fruits/papaya.png',
-  itemName: 'Mamão papaya',
+  picture: 'assets/fruits/papaya.png',
+  title: 'Mamão papaya',
   price: 8,
   unit: 'kg',
   description:
