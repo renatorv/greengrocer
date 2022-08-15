@@ -20,8 +20,7 @@ class HomeRepository {
           .toList();
       return HomeResult.success(data);
     } else {
-      return HomeResult.error(
-          'Ocorreu um erro inesperado ao recuperar os itens.');
+      return HomeResult.error('Ocorreu um erro ao recuperar os itens.');
     }
   }
 
@@ -44,8 +43,7 @@ class HomeRepository {
       return HomeResult<CategoryModel>.success(data);
     } else {
       // Erro
-      return HomeResult.error(
-          'Ocorreu um erro inesperado ao recuperar as categorias.');
+      return HomeResult.error('Ocorreu um erro ao recuperar as categorias.');
     }
   }
 }
